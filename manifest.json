@@ -1,0 +1,15 @@
+{
+    "manifest_version": 2,
+    "name": "Metric/Imperial Conversion",
+    "description": "Converts metric to imperial, and vice versa",
+    "homepage_url": "https://github.com/ultraviollett/Metric-Imperial-FireFox-Extension",
+    "version": "1.0",
+
+  
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["./convertunits.js"]
+      }
+    ]
+  }
