@@ -1,0 +1,12 @@
+.changed-units{
+    font-weight: bold;
+    color: #000;
+}
+
+.changed-units .meas1{ /*measurement 1*/
+    background-color: aquamarine;
+}
+
+.changed-units .meas2 {
+    background-color: pink;
+}
