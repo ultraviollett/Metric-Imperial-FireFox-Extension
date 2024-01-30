@@ -16,11 +16,15 @@ function replaceText(node) {
   let content = node.innerHTML;
 
   // Actually do the replacement / substitution.
-  regex = new RegExp(/(\d{1,}\s?g)(?=[\s|.])/gi);
+  regex = new RegExp(/([\d|.]{1,}\s?g)(?=[\s|.|<])/gi);
+
+  let count = 0;
 
   content = content.replace(regex, function (x) {
-    const num = x.replace(/[^0-9]/g, "");
-
+    const num = x.replace(/[^0-9|.]/g, "");
+    if (num < 2){
+        return x;
+    }
       //gets the unit (tsp, tbsp, or cups) and the newNum (decided by the unit) in an object called result
       var result = (function () {
         if (num <= 8) return { convert: 4.2, unit: "tsp" };
@@ -49,8 +53,16 @@ function replaceText(node) {
 
     const text = newNum + " " + result.unit;
 
-     
-    return `<span class="changed-units"><span class=meas1>${x}</span> <span class=meas2>${text}</span></span>`;
+    count += 1;
+    
+    return `<input type="checkbox" class="changed-units-input" id="units${count}" />
+    <span class="changed-units-toggle">
+      <label for="units${count}">
+        
+        <span class="imp">${x}</span>
+        <span class="met">${text}</span>
+      </label>
+    </span>`;
   });
 
   // Now that all the replacements are done, perform the DOM manipulation.

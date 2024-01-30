@@ -1,12 +1,33 @@
-.changed-units{
-    font-weight: bold;
-    color: #000;
-}
+.changed-units-toggle {
+    position: relative;
+    border: 2px solid #14cd8f;
+    user-select: none;
 
-.changed-units .meas1{ /*measurement 1*/
-    background-color: aquamarine;
-}
+    border-radius: 0.2rem;
+  }
 
-.changed-units .meas2 {
+  .changed-units-input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    overflow:hidden;
+  }
+
+  .changed-units-toggle label span{
+    
+    width: fit-content;
+    display: inline-block;
+  }
+
+  .changed-units-input:checked + .changed-units-toggle{
     background-color: pink;
-}
+    border-color: pink;
+  }
+  .changed-units-input:checked ~ * .met {
+    display: none;
+    
+  }
+  .changed-units-input:not(:checked) ~ * .imp {
+    display: none;
+  }
